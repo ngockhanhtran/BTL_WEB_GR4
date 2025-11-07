@@ -1,0 +1,184 @@
+/* PHẦN CAM KẾT - PLC*/
+.plc {
+  background: linear-gradient(135deg, #f9fafc, #eef1f4);
+  border-top: 1px solid #e1e1e1;
+  border-bottom: 1px solid #e1e1e1;
+  padding: 20px 0;
+  font-size: 15px;
+  color: #333;
+}
+
+.plc ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  max-width: 1200px;
+}
+
+.plc li {
+  flex: 1 1 20%;
+  min-width: 180px;
+  text-align: center;
+  padding: 15px;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+  border-right: 1px solid #ddd;
+}
+
+.plc li:last-child {
+  border-right: none;
+}
+
+.plc li:hover {
+  background-color: #ffffff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
+  border-radius: 8px;
+}
+
+.plc li i {
+  display: block;
+  font-size: 26px;
+  margin-bottom: 8px;
+  color: #007bff;
+  transition: color 0.3s ease;
+}
+
+.plc li:hover i {
+  color: #ff4b2b;
+}
+
+.plc li span {
+  display: block;
+  font-weight: 600;
+  color: #333;
+}
+
+/* PHẦN FOOTER*/
+.footer {
+  background: linear-gradient(180deg, #1e1e1e, #0d0d0d);
+  color: #ddd;
+  padding: 50px 0 20px;
+  font-size: 15px;
+  position: relative;
+  z-index: 1;
+}
+
+.footer .footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+.footer-column {
+  flex: 1 1 25%;
+  margin-bottom: 30px;
+  min-width: 250px;
+}
+
+.footer-column h3 {
+  font-size: 18px;
+  color: #fff;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.footer-column h3::after {
+  content: '';
+  width: 40px;
+  height: 2px;
+  background: #ff4b2b;
+  display: block;
+  margin-top: 5px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li {
+  margin: 8px 0;
+}
+
+.footer-column ul li a {
+  color: #ccc;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-column ul li a:hover {
+  color: #fff;
+  margin-left: 4px;
+}
+
+/*DÒNG BẢN QUYỀN*/
+.copy-right {
+  background: #111;
+  text-align: center;
+  padding: 15px;
+  color: #888;
+  font-size: 14px;
+  border-top: 1px solid #222;
+}
+
+.copy-right a {
+  color: #ff4b2b;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.copy-right a:hover {
+  color: #fff;
+}
+
+/* 3 cột trg footer */
+.footer-column img {
+  max-width: 100%; /* Đảm bảo ảnh không bị tràn cột */
+  height: auto;
+  margin-top: 10px;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.footer-column img:hover {
+  opacity: 1;
+}
+
+/* Ảnh logo UTC (Thêm nền trắng để dễ nhìn trong dark mode) */
+.footer-img-utc {
+  max-height: 55px;
+  background: #fff;
+  padding: 5px 10px;
+  border-radius: 8px;
+  box-sizing: border-box; /*để padding không làm vỡ layout */
+}
+
+/*  RESPONSIVE */
+@media (max-width: 768px) {
+    .plc li {
+        flex-basis: 45%; /* 2 cột */
+        border-right: none;
+        margin-bottom: 10px;
+    }
+    .plc li:hover {
+        transform: none;
+    }
+
+    .footer .footer-container {
+        flex-direction: column; /* Xếp dọc */
+        padding: 0 20px;
+    }
+    .footer-column {
+        min-width: 100%;
+        margin-bottom: 20px;
+    }
+}

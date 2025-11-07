@@ -1,0 +1,74 @@
+/* Modern Top Navigation (Instagram version)  */
+.top-nav {
+	display: inline-block;
+	background: linear-gradient(90deg, #0d6efd 0%, #20c997 100%);
+	width: 100%;
+	border-bottom: none;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+	font-family: "Inter", system-ui, sans-serif;
+}
+
+/* Social Icons */
+.social-top-nav {
+	float: left;
+	display: table;
+}
+
+.social-top-nav a {
+	display: table-cell;
+	padding: 6px;
+	text-align: center;
+	font-size: 14px;
+	height: 2.2em;
+	width: 2.2em;
+	line-height: 2.2em;
+	color: #ffffffcc; /* trắng mờ */
+	background-color: transparent;
+	border-radius: 50%;
+	transition: all 0.25s ease;
+}
+
+.social-top-nav a:hover {
+	color: #fff;
+	transform: translateY(-2px);
+}
+
+/* Giữ nguyên màu thương hiệu khi hover */
+.fa-facebook:hover { background: #3b5998; }
+/* 🔥 Instagram hover gradient */
+.fa-instagram:hover {
+	background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+.fa-google:hover { background: #dd4b39; }
+.fa-youtube:hover { background: #bb0000; }
+
+/* Quick link */
+.top-nav-quicklink {
+	float: right;
+}
+
+.top-nav-quicklink li {
+	display: inline-block;
+	font-size: 1em;
+	color: #ffffffcc;
+}
+
+.top-nav-quicklink li a {
+	display: block;
+	color: #ffffffcc;
+	padding: 10px 16px;
+	font-weight: 500;
+	text-decoration: none;
+	transition: all 0.25s ease;
+	border-radius: 6px;
+}
+
+.top-nav-quicklink li a:hover {
+	color: #fff;
+	background: rgba(255, 255, 255, 0.15);
+	transform: translateY(-2px);
+}
+
+.top-nav-quicklink li a:hover i {
+	color: #00e0ff;
+}
