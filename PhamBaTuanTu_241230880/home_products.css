@@ -1,0 +1,247 @@
+/*KHÔNG CÓ SẢN PHẨM */
+#khongCoSanPham {
+  opacity: 0;
+  width: 0;
+  color: #ff4b2b;
+  font-size: 28px;
+  font-weight: 600;
+  height: 310px;
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+/*DANH SÁCH SẢN PHẨM */
+.homeproduct {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  padding: 20px 10px;
+}
+
+/*THẺ SẢN PHẨM */
+.sanPham {
+  width: 230px;
+  background: #fff;
+  border-radius: 15px;
+  overflow: visible;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  position: relative;
+  cursor: pointer;
+}
+.sanPham:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+/*NỘI DUNG BÊN TRONG */
+.sanPham a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px;
+  height: 330px;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* HÌNH ẢNH SẢN PHẨM */
+.sanPham a img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  transition: 0.3s ease;
+}
+.sanPham a:hover img {
+  transform: scale(1.05);
+}
+
+/* TÊN SẢN PHẨM */
+.sanPham h3 {
+  font-size: 15px;
+  color: #333;
+  text-align: center;
+  line-height: 1.4;
+  margin-top: 8px;
+  height: 40px;
+  overflow: hidden;
+}
+.sanPham a:hover h3 {
+  color: #007bff;
+}
+
+/* GIÁ SẢN PHẨM */
+.sanPham .price {
+  margin-top: 8px;
+  text-align: center;
+}
+.sanPham strong {
+  font-size: 16px;
+  color: #e10c00;
+  font-weight: 600;
+}
+.sanPham .price span {
+  font-size: 13px;
+  text-decoration: line-through;
+  color: #999;
+  margin-left: 5px;
+}
+
+/* RATING */
+.sanPham .ratingresult {
+  margin-top: 6px;
+  font-size: 13px;
+  text-align: center;
+  color: #666;
+}
+.fa-star,
+.fa-star-o {
+  color: #ffb400;
+}
+
+/*NHÃN KHUYẾN MÃI */
+.sanPham label {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+.sanPham label.giamgia {
+  background: linear-gradient(90deg, #ff9c00, #ec1f1f);
+}
+.sanPham label.tragop {
+  background: #f28902;
+}
+.sanPham label.giareonline {
+  background: #3fb846;
+}
+.sanPham label.moiramat {
+  background: #1191f8;
+}
+
+/*NÚT THÊM VÀO GIỎ — HIỆU ỨNG BAY NGOÀI */
+.sanPham {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  background: #fff;
+}
+
+.sanPham:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-3px);
+}
+
+/* Nút thêm giỏ hàng */
+.themvaogio {
+  position: absolute;
+  bottom: -50px; /* ban đầu ẩn bên dưới khung */
+  right: 12px;
+  border: none;
+  background: #ffffff;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  font-size: 18px;
+  color: #666;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.35s ease;
+  cursor: pointer;
+  z-index: 5;
+  
+  /* SỬA: Mặc định ẩn đi */
+  opacity: 0; 
+}
+
+/* Khi hover vào sản phẩm -> nút bay lên */
+.sanPham:hover .themvaogio {
+  bottom: 10px;
+  right: 10px;
+  transform: scale(1.05);
+  
+  /* SỬA: Hiện ra khi hover */
+  opacity: 1; 
+}
+
+/* Hover nút */
+.themvaogio:hover {
+  background: #007bff;
+  color: #fff;
+  box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+}
+
+.themvaogio:active {
+  transform: scale(0.92);
+  box-shadow: none;
+}
+
+/* Tooltip nhẹ khi hover */
+.themvaogio[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 130%;
+  right: 50%;
+  transform: translateX(50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  font-size: 11px;
+  padding: 4px 7px;
+  border-radius: 5px;
+  white-space: nowrap;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+/*RESPONSIVE - Áp dụng cho màn hình tablet và nhỏ hơn */
+@media (max-width: 1023px) { 
+    .homeproduct {
+        gap: 15px; /* Giảm khoảng cách */
+        padding: 15px 5px;
+    }
+    /* Chia 2 cột trên tablet */
+    .sanPham {
+        flex-basis: 45%; 
+        width: 45%; 
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    }
+
+	/* Tắt hiệu ứng nhấc card lên trên đth */
+    .sanPham:hover {
+        transform: none; 
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+    }
+	
+	/* PHẦN QUAN TRỌNG:
+	   Ghi đè CSS ở trên để nút "Thêm vào giỏ" LUÔN HIỂN THỊ 
+	   trên màn hình cảm ứng, không cần hover.
+	*/
+	.sanPham .themvaogio {
+        bottom: 10px; /* Cho nút luôn ở vị trí */
+        opacity: 1; /* Cho nút luôn hiện */
+    }
+	
+	/* Tắt tooltip trên mobile */
+	.themvaogio[title]:hover::after {
+		display: none;
+	}
+}
+
+/* Áp dụng cho màn hình điện thoại nhỏ */
+@media (max-width: 480px) {
+    .sanPham {
+        /* Chia 1 cột trên điện thoại nhỏ */
+        flex-basis: 90%;
+        width: 90%;
+    }
+}
