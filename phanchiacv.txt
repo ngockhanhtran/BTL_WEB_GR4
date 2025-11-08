@@ -1,0 +1,58 @@
+*** Jquery và owlcarousel là thư viện
+- jQuery (v3.3.1)**: Được sử dụng làm thư viện nền để thao tác DOM và là yêu cầu bắt buộc cho thư viện OwlCarousel.
+
+- OwlCarousel (v2.3.4)**: Thư viện được sử dụng để tạo tất cả các thanh trượt (slider/carousel) 
+trong dự án (banner, sản phẩm sale, ảnh chi tiết sản phẩm).
+
+PHÂN CHIA CÔNG VIỆC:
+1. Manh (Module: Tính năng Nâng cao)
+sẽ phụ trách 3 tính năng đặc biệt: trang Sale (sự kiện), trang Giỏ hàng và chức năng Dark Mode.
+• sale.html
+• sale.js (Logic đồng hồ đếm ngược, popup, carousel sản phẩm sale)
+• sale.css
+• giohang.html (Giao diện trang giỏ hàng)
+• giohang.js (Logic trang giỏ hàng: tăng/giảm, xóa, thanh toán)
+• gioHang.css (CSS cho bảng giỏ hàng)
+• darkmode.js (Logic bật/tắt chế độ tối)
+• darkmode.css (CSS định nghĩa màu sắc cho chế độ tối)
+
+2. Khánh (Module: Lõi & Cấu trúc chung)
+phụ trách "bộ khung" của website, bao gồm các file dùng chung và file dữ liệu quan trọng nhất.
+• dungchung.js (File JS lõi: chèn header/footer, logic Thêm vào giỏ hàng)
+• classes.js (Định nghĩa cấu trúc Product, Promo)
+• style.css (File CSS toàn cục, reset, alert, nút gotoTop)
+• header.css (CSS cho thanh menu chính và tìm kiếm)
+• footer.css (CSS cho chân trang)
+• topnav.css (CSS cho thanh liên hệ trên cùng)
+• data/products.js (File CSDL chứa tất cả sản phẩm)
+
+3. Tú (Module: Trang chủ & Lọc sản phẩm)
+phụ trách trang quan trọng nhất (trang chủ) và các thuật toán lọc/sắp xếp sản phẩm.
+• index.html (Giao diện trang chủ)
+• trangchu.js (Logic trang chủ: lọc, sắp xếp, addKhungSanPham)
+• trangchu.css (CSS cho các bộ lọc, dropdown của trang chủ)
+• home_products.css (CSS chung cho các thẻ sản phẩm)
+• banner.css (CSS cho banner chính)
+• pagination_phantrang.css (CSS cho thanh chuyển trang)
+
+4. Quỳnh (Module: Chi tiết sản phẩm & Trang tĩnh 1)
+phụ trách luồng xem chi tiết sản phẩm (bao gồm cả thuật toán gợi ý) và 2 trang nội dung.
+• chitietsanpham.html (Trang chi tiết sản phẩm)
+• chitietsanpham_v2.js (Logic trang chi tiết, thuật toán gợi ý sản phẩm)
+• chitietsanpham.css (CSS cho trang chi tiết)
+• tintuc.html (Trang tin tức)
+• tintuc.css (CSS trang tin tức)
+• tuyendung.html (Trang tuyển dụng)
+• tuyendung.css (CSS trang tuyển dụng)
+
+5. Kiên (Module: Trang tĩnh 2 & Tiện ích)
+phụ trách các trang nội dung còn lại (bao gồm cả trang liên hệ có validation) và các tệp tài liệu, tiện ích.
+• lienhe.html (Trang liên hệ)
+• lienhe.js (Logic kiểm tra (validate) form liên hệ)
+• lienhe.css (CSS trang liên hệ)
+• gioithieu.html (Trang giới thiệu)
+• gioithieu.css (CSS trang giới thiệu)
+• trungtambaohanh.html (Trang bảo hành)
+• baohanh.css (CSS trang bảo hành)
+• createProductJson.html (Trang công cụ dành cho admin)
+• README.md (Tệp tài liệu dự án)
