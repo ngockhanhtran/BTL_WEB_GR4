@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="vi"> 
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<title>The Mobile Zone</title>
+	<link rel="shortcut icon" href="./img/favicon.ico" />
+
+	<script src="./PhuongMaiAnh_241224468/darkmode.js"></script>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+	 crossorigin="anonymous">
+	<link rel="stylesheet" href="./js/owlcarousel/owl.carousel.min.css">
+	<link rel="stylesheet" href="./js/owlcarousel/owl.theme.default.min.css">
+
+	<link rel="stylesheet" href="./TranNgocKhanh_241230761/style.css">
+	<link rel="stylesheet" href="./TranNgocKhanh_241230761/topnav.css">
+	<link rel="stylesheet" href="./TranNgocKhanh_241230761/header.css">
+    <link rel="stylesheet" href="./TranNgocKhanh_241230761/footer.css">
+    <link rel="stylesheet" href="tintuc.css"> 
+    <link rel="stylesheet" href="./PhuongMaiAnh_241224468/darkmode.css">
+
+    <script src="./TranNgocKhanh_241230761/data/products.js"></script>
+    <script src="./TranNgocKhanh_241230761/dungchung.js"></script>
+    <script>
+        window.onload = function () {
+            khoiTao();
+            // thêm tags (từ khóa) vào khung tìm kiếm
+            var tags = ["Samsung", "iPhone", "Huawei", "Oppo", "Xiaomi"];
+            for (var t of tags) addTags(t, "index.html?search=" + t);
+        }
+    </script>
+</head>
+
+<body>
+    <script> addTopNav();</script>
+
+    <section style="min-height: 85vh">
+        <script> addHeader(); </script>
+
+        <div class="body-tintuc">
+
+            <div class="tintuc-header">Tin Tức</div>
+            <div class="tintuc-info">
+                <a href="https://znews.vn/ipad-pro-sap-doi-moi-post1597268.html" target="_blank">
+                    <img src="../img/tintuc/anhtintuc1.jpg">
+                    <h2>iPad Pro sắp đổi mới - Liệu có phải bước tiến công nghệ?</h2>
+                </a>
+                <br>
+                <h5>Tạp chí tin tức &emsp;22 giờ</h5>
+                <br>
+                <h5>iPad Pro thế hệ tiếp theo dự kiến trang bị tản nhiệt buồng hơi tương tự iPhone 17 Pro, giúp đảm bảo
+                    nhiệt độ và hiệu năng ổn định.</h5>
+            </div>
+            <div class="tintuc-info">
+                <a href="https://znews.vn/quan-bai-chien-luoc-cua-xiaomi-o-viet-nam-post1597907.html"
+                    target="_blank">
+                    <img src="../img/tintuc/anhtintuc2.webp">
+                    <h2>Quân bài chiến lược của Xiaomi ở Việt Nam</h2>
+                </a>
+                <br>
+                <h5>Doanh nghiệp &emsp; 6 giờ</h5>
+                <br>
+                <h5>Xiaomi áp đảo ở phân khúc giá rẻ nhưng ít lợi thế ở các dòng flagship tại Việt Nam. Dòng T trở
+                    thành model quan trọng nhất của hãng này để đưa người dùng lên lựa chọn cao hơn.</h5>
+            </div>
+            <div class="tintuc-info">
+                <a href="https://znews.vn/tai-sao-iphone-nhat-luon-re-post1596936.html" target="_blank">
+                    <img src="../img/tintuc/anhtintuc3.jpg">
+                    <h2>Tại sao 'iPhone Nhật' luôn rẻ</h2>
+                </a>
+                <br>
+                <h5>Tạp chí tin tức &emsp; 12 giờ</h5>
+                <br>
+                <h5>Bất chấp biến động địa chính trị và tỷ giá, iPhone tại Nhật Bản vẫn thuộc nhóm rẻ nhất thế giới.
+                </h5>
+            </div>
+            <div class="tintuc-info">
+                <a href="https://znews.vn/oppo-ra-mat-find-x9-pro-voi-pin-7500-mah-post1597937.html"
+                    target="_blank">
+                    <img src="../img/tintuc/anhtintuc4.webp">
+                    <h2>Oppo ra mắt Find X9 Pro với pin 7.500 mAh</h2>
+                </a>
+                <br>
+                <h5>VietQ &emsp; 13 giờ</h5>
+                <br>
+                <h5>Bộ đôi Oppo Find X9 cải tiến mạnh về phần cứng và camera, riêng Find X9 Pro trang bị dung lượng pin
+                    7.500 mAh.</h5>
+            </div>
+            <div class="tintuc-info">
+                <a href="https://znews.vn/sinh-vien-moi-ra-truong-chon-smartphone-nao-da-nang-ma-hop-tui-tien-post1595357.html"
+                    target="_blank">
+                    <img src="../img/tintuc/anhtintuc5.webp" height="148px" width="224px;">
+                    <h2>Sinh viên mới ra trường chọn smartphone nào đa năng mà hợp túi tiền?</h2>
+                </a>
+                <br>
+                <h5>Zing &emsp; 9 giờ</h5>
+                <br>
+                <h5>Trong tầm giá dưới 10tr, Oppo A6 Pro series trở thành lựa chọn lý tưởng với người trẻ mới
+                    gia nhập thị trường lao động nhờ độ bền bỉ và cấu hình đa nhiệm.</h5>
+            </div>
+            <div class="tintuc-info">
+                <a href="https://znews.vn/bi-mat-cua-iphone-17-post1594213.html" target="_blank">
+                    <img src="../img/tintuc/anhtintuc6.webp">
+                    <h2>Bí mật của iPhone 17</h2>
+                </a>
+                <br>
+                <h5>Zing &emsp; 4 giờ</h5>
+                <br>
+                <h5>Apple cho rằng họ lại "tái định nghĩa" camera trước trên iPhone 17 nhờ cảm biến vuông, loạt thuật
+                    toán tự động tối ưu ảnh.</h5>
+            </div>
+            <div class="tintuc-info">
+                <a href="https://znews.vn/ky-luc-cua-xiaomi-17-duoc-dai-truyen-hinh-xac-nhan-post1591527.html"
+                    target="_blank">
+                    <img src="../img/tintuc/anhtintuc7.png">
+                    <h2>Kỷ lục của Xiaomi 17 được xác nhận</h2>
+                </a>
+                <br>
+                <h5>Tạp chí tin tức &emsp; 7 giờ</h5>
+                <br>
+                <h5>Xiaomi 17 series đã vượt mốc 1 triệu chiếc bán ra chỉ sau 5 ngày ra mắt.</h5>
+            </div>
+            <div class="tintuc-info">
+                <a href="https://znews.vn/ios-26-co-gi-thu-vi-post1585977.html" target="_blank">
+                    <img src="../img/tintuc/anhtintuc8.webp">
+                    <h2>Có nên cập nhật iPhone lên iOS 26?</h2>
+                </a>
+                <br>
+                <h5>VietQ &emsp; 7 giờ</h5>
+                <br>
+                <h5>Liquid Glass là cải tiến đáng giá nhất trên iOS 26, mang lại những điều mới mẻ về giao diện, bên
+                    cạnh một số cải tiến nhỏ về tính năng và độ tối giản.</h5>
+            </div>
+
+        </div>
+
+    </section>
+
+    <div class="footer">
+        <script>addFooter();</script>
+
+    </div>
+
+    <i class="fa fa-arrow-up" id="goto-top-page" onclick="gotoTop()"></i>
+
+</body>
+
+</html>

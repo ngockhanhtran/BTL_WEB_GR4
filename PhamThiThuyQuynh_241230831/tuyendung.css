@@ -1,0 +1,83 @@
+.body-tuyendung {
+    max-width: 900px;
+    width: 80%;
+    margin: 50px auto 150px;
+}
+
+.tuyendung-header {
+    background: none;
+    height: auto;
+    line-height: normal;
+    border-bottom: 2px solid var(--border-color); /* Sửa #eee */
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--text-color); /* Sửa #333 */
+    padding-left: 0;
+}
+
+.tuyendung-info {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-color); /* Sửa #333 */
+}
+
+.tuyendung-info h1 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: var(--text-color); /* Sửa #000 */
+}
+
+.tuyendung-info h2 {
+    font-size: 22px;
+    color: var(--text-color); /* Sửa #333 */
+    margin-top: 30px;
+}
+
+.tuyendung-info h3 {
+    font-size: 20px;
+    color: var(--text-color); /* Sửa #333 */
+    border-bottom: 1px solid var(--border-color); /* Sửa #eee */
+    padding-bottom: 5px;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.tuyendung-info ul {
+    margin-left: 20px;
+    margin-bottom: 25px;
+    padding-left: 15px;
+}
+
+.tuyendung-info p {
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.btn-ungtuyen {
+    display: inline-block;
+    background-color: #007bff;
+    color: white !important;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 15px;
+    transition: background-color 0.3s;
+}
+
+.btn-ungtuyen:hover {
+    background-color: #0056b3;
+    color: white !important;
+}
+
+/*RESPONSIVE */
+@media (max-width: 768px) {
+    .body-tuyendung {
+        width: 100%;
+        margin: 20px auto;
+    }
+}
