@@ -1,0 +1,268 @@
+/*link tham khảo cách làm dark mode*/
+/*https://evondev.com/huong-dan-lam-giao-dien-dark-mode-cho-website-tu-a-z/
+
+/* 1. Nút bật/tắt dark mode */
+.dark-mode-toggle {
+	width: 32px; /* Kích thước icon */
+	height: 32px;
+	padding: 6px;
+	border-radius: 50%;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	/* Đặt bên cạnh giỏ hàng */
+	margin: 0 15px;
+	border: 1px solid #ccc;
+	box-sizing: border-box; /* Thêm để icon không bị méo */
+}
+
+.dark-mode-toggle:hover {
+	background-color: #f0f0f0;
+}
+
+/* 2. Biến màu cho Light Mode (Mặc định) */
+:root {
+	--body-bg: #f8fafc; /* Màu nền body (hơi xám) */
+	--section-bg: #ffffff; /* Màu nền chính (trắng) */
+	--text-color: #333; /* Màu chữ chính */
+	--text-color-light: #666; /* Màu chữ phụ */
+	--header-bg: #ffffff; /* Nền header */
+	--card-bg: #ffffff; /* Nền của sản phẩm */
+	--table-even-bg: #f2f2f2; /* Nền dòng chẵn của bảng */
+	--border-color: #e1e1e1; /* Màu viền */
+	--dropdown-bg: rgba(255, 255, 255, 0.95); /* Nền dropdown */
+	--input-bg: rgba(255, 255, 255, 0.8);
+	--promo-text: #fff; /* Chữ trên nhãn khuyến mãi */
+}
+
+/* 3. Biến màu cho Dark Mode (Khi có class .dark) */
+html.dark {
+	--body-bg: #1a1a1a;
+	--section-bg: #2a2a2a;
+	--text-color: #e0e0e0;
+	--text-color-light: #aaa;
+	--header-bg: #2a2a2a;
+	--card-bg: #333333;
+	--table-even-bg: #303030;
+	--border-color: #444;
+	--dropdown-bg: rgba(40, 40, 40, 0.95);
+	--input-bg: rgba(50, 50, 50, 0.8);
+	--promo-text: #fff; /* Giữ nguyên màu trắng */
+
+	.autocomplete-items {
+		background-color: var(--dropdown-bg);
+		border-color: var(--border-color);
+	}
+	.autocomplete-items div {
+		background-color: var(--dropdown-bg);
+		border-bottom-color: var(--border-color);
+		color: var(--text-color);
+	}
+	.autocomplete-items div:hover {
+		background-color: var(--card-bg); /* Màu tối hơn 1 chút khi hover */
+	}
+	/* Giữ nguyên màu xanh cho .autocomplete-active */
+	.autocomplete-active {
+		background-color: DodgerBlue !important; 
+		color: #ffffff;
+	}
+
+	.listSanPham {
+		color: var(--text-color);
+	}
+	/* QUY TẮC SỬA LỖI TÊN SẢN PHẨM */
+	.listSanPham td a {
+		color: var(--text-color);
+	}
+	.listSanPham tr:nth-of-type(even) {
+		background-color: var(--table-even-bg);
+	}
+	.listSanPham tr:not(:last-child):hover {
+		background-color: var(--card-bg);
+	}
+	.listSanPham td {
+		border-color: var(--border-color);
+	}
+	.listSanPham .soluong input {
+		 background-color: var(--body-bg);
+		 color: var(--text-color);
+	}
+	/* Bổ sung quy tắc cho dòng TỔNG TIỀN */
+	.listSanPham tr:last-child { 
+		background-color: var(--card-bg); 
+	}
+	/* Bổ sung quy tắc cho nút Thanh Toán */
+	.thanhtoan {
+		background-color: #4CAF50;
+		color: white;
+	}
+	.thanhtoan:hover {
+		background-color: #45a049;
+	}
+	.fa-trash {
+		color: var(--text-color-light);
+	}
+
+	/* Trang tĩnh (giới thiệu, tin tức, ...) */
+	.page-gt, .body-tintuc, .body-tuyendung, .body-lienhe, table {
+		color: var(--text-color);
+	}
+	.page-header, .tintuc-header, .tuyendung-header {
+		border-bottom-color: var(--border-color);
+		color: var(--text-color);
+	}
+	.lienhe-header {
+		background: linear-gradient(90deg, #007bff, #00c6ff);
+		color: #fff;
+	}
+	.tintuc-info {
+		 border-bottom-color: var(--border-color);
+	}
+	.tintuc-info h2 {
+		color: var(--text-color);
+	}
+	 .tintuc-info h5:last-of-type {
+		color: var(--text-color-light);
+	}
+	.lienhe-info p, .lienhe-info b, .thongtinnhom table td, .thongtinnhom table th, .info-left h2 {
+		color: var(--text-color) !important; /* Dùng !important để thắng style inline "color: gray" */
+	}
+	.thongtinnhom table td, .thongtinnhom table th {
+		border-color: var(--border-color);
+	}
+	
+	/* THÊM HIỆU ỨNG HOVER CHO SẢN PHẨM */
+	.sanPham:hover {
+		border-color: var(--text-color); /* Viền trắng/sáng khi hover */
+		box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4); /* Shadow tối hơn cho rõ */
+	}
+	
+	/* SỬA LỖI LOGO HÃNG BỊ CHÌM  */
+	.companyMenu a {
+		background: #fff; /* Thêm nền trắng */
+		border-color: #fff;
+	}
+	.companyMenu a:hover {
+		background: #f0f0f0; /* Thêm nền trắng nhạt khi hover */
+		border-color: #00aaff; /* Giữ viền xanh khi hover */
+	}
+
+	/* Icon in Dark mode */
+	.dark-mode-toggle {
+		/* Lật màu icon (mặt trăng -> mặt trời) và làm nó sáng lên */
+		filter: invert(100%) brightness(1.5);
+	}
+} /*KHỐI html.dark KẾT THÚC  */
+
+
+/* 4. Áp dụng các biến màu này vào các thành phần của trang */
+
+/* Áp dụng chung */
+body {
+	background-color: var(--body-bg);
+	color: var(--text-color);
+}
+
+section {
+	background-color: var(--section-bg);
+}
+
+hr {
+	background-color: var(--border-color);
+	border-top-color: var(--border-color);
+}
+
+/* Header & Topnav */
+.header {
+	background-color: var(--header-bg);
+	border-bottom-color: var(--border-color);
+}
+.tools-member a {
+	color: var(--text-color-light);
+}
+.input-search input {
+	background-color: var(--input-bg);
+	color: var(--text-color);
+}
+/* Giữ icon giỏ hàng và số lượng rõ ràng */
+.tools-member i {
+	background-color: var(--body-bg);
+	color: var(--text-color);
+	border-color: var(--border-color);
+}
+.cart-number {
+	color: red; /* Luôn là màu đỏ */
+}
+
+/* Trang chủ */
+.khungSanPham, .sanPham {
+	background-color: var(--card-bg);
+	border-color: var(--border-color);
+	box-shadow: none; /* Tắt bớt shadow cho đỡ rối */
+}
+.sanPham h3 {
+	color: var(--text-color);
+}
+.sanPham a:hover h3 {
+	 color: #007bff; /* Giữ màu hover */
+}
+ .sanPham .ratingresult {
+	color: var(--text-color-light);
+}
+.sanPham label {
+	color: var(--promo-text); /* Đảm bảo chữ trên nhãn khuyến mãi luôn sáng */
+}
+.dropdown-content {
+	background: var(--dropdown-bg);
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+.dropdown-content a {
+	color: var(--text-color);
+}
+.filterName input {
+	background-color: var(--input-bg);
+	border-color: var(--border-color);
+	color: var(--text-color);
+}
+
+/* Chi tiết sản phẩm */
+.chitietSanpham h1 {
+	color: var(--text-color);
+}
+.area_price span {
+	color: var(--text-color-light);
+}
+.info_product {
+	border-color: var(--border-color);
+}
+.info li {
+	border-top-color: var(--border-color);
+}
+.info li p {
+	color: var(--text-color-light);
+}
+ .info li div {
+	color: var(--text-color);
+}
+.policy, .area_promo {
+	border-color: var(--border-color);
+}
+.policy div p {
+	color: #288ad6; /* Giữ màu link */
+}
+
+/* Footer */
+.plc {
+  background: var(--section-bg);
+  border-top-color: var(--border-color);
+  border-bottom-color: var(--border-color);
+}
+.plc li {
+  border-right-color: var(--border-color);
+  color: var(--text-color);
+}
+.plc li:hover {
+  background-color: var(--body-bg);
+}
+.plc li span {
+  color: var(--text-color);
+}

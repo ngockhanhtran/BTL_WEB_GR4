@@ -1,0 +1,350 @@
+/* Container chính của trang sale */
+.sale-page-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+
+/* Phần bọc banner, đã bỏ nền đen */
+.sale-header {
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+
+/* Kiểu dáng cho cái banner Black Friday */
+
+/* Div bọc ngoài của banner */
+.sale-banner-wrapper {
+    position: relative;        /* Để định vị nút "Xem chi tiết" */
+    max-width: 1000px;       /* Kích thước banner */
+    margin: 0 auto;            /* Căn giữa */
+    border-radius: 8px;        
+    overflow: hidden;          /* Giấu phần thừa nếu có */
+}
+
+/* Ảnh banner */
+.sale-banner-wrapper img {
+    width: 100%; 
+    height: auto; 
+    display: block; /* Sửa lỗi có khoảng trắng nhỏ dưới ảnh */
+}
+
+/* Nút "Xem chi tiết" nằm đè lên banner */
+#openModalBtn {
+    position: absolute;
+    bottom: 15px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.6); 
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer; /* Biến chuột thành hình bàn tay */
+    z-index: 5;
+}
+
+/* Hiệu ứng khi rê chuột vào nút "Xem chi tiết" */
+#openModalBtn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+/* CSS cho các phần còn lại của trang */
+
+.coupon-code {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.coupon-code p {
+    font-size: 18px;
+    color: var(--text-color-light); /* sửa để phù hợp với dark mode */
+    margin: 0 0 10px 0;
+}
+
+/* Ô chứa mã giảm giá */
+.coupon-code .code {
+    display: inline-block;
+    background-color: #fff0f0;
+    border: 2px dashed #e74c3c;
+    color: #e74c3c;
+    font-size: 28px;
+    font-weight: bold;
+    padding: 15px 30px;
+    border-radius: 5px;
+    letter-spacing: 2px;
+}
+
+/* Tiêu đề "Sản Phẩm Áp Dụng" */
+.sale-products-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-color); /* sửa để phù hợp với dark mode */
+    border-bottom: 2px solid var(--border-color); /* sửa để phù hợp với dark mode */
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Khung đồng hồ đếm ngược */
+.countdown-container {
+    text-align: center;
+    margin-bottom: 25px;
+    padding: 15px;
+    background-color: #2c3e50; 
+    border-radius: 8px;
+}
+
+.countdown-container h3 {
+    color: white;
+    font-size: 20px;
+    margin: 0 0 15px 0;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+#countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+#countdown-timer div {
+    background-color: #34495e; 
+    padding: 10px 15px;
+    border-radius: 5px;
+    min-width: 70px;
+}
+
+#countdown-timer div span {
+    display: block;
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#countdown-timer div p {
+    color: #bdc3c7; 
+    font-size: 12px;
+    text-transform: uppercase;
+    margin: 5px 0 0 0;
+}
+
+/* CSS TẠO KIỂU CHO POPUP (MODAL) */
+
+/* Lớp nền mờ */
+.modal-overlay {
+    display: none; 
+    position: fixed; 
+    z-index: 1000;   
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); 
+}
+
+/* Khung popup chung */
+.modal {
+    position: fixed; 
+    z-index: 1001;   
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); 
+    
+    background-color: var(--section-bg); /* thay đổi để phù hợp với dark mode */
+    border-radius: 8px;
+    
+    min-width: 650px; 
+    max-width: 90%;   
+    max-height: 85vh; /* Chiều cao tối đa */
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+    
+    display: none; /* Bị ẩn ban đầu */
+    flex-direction: column; 
+    padding: 0;             
+}
+
+/* PHẦN 1: Header của Popup (KHÔNG DÙNG FLEXBOX) */
+.modal-header {
+    position: relative; /* Quan trọng: Làm mốc cho nút X */
+    flex-shrink: 0;     /* Không cho co lại khi cuộn */
+    padding: 20px 30px;
+    border-bottom: 1px solid var(--border-color); /* thay đổi để phù hợp với dark mode */
+    z-index: 10;
+    
+    /* Thêm padding-right để tiêu đề không bị đè lên nút X */
+    padding-right: 60px; 
+}
+
+/* Nút X để đóng popup (Dùng lại position: absolute) */
+.modal-close {
+    position: absolute; /* Đặt nút X so với .modal-header */
+    top: 50%; /* Căn giữa nút X theo chiều dọc */
+    right: 30px; /* Cách lề phải 30px */
+    transform: translateY(-50%); /* Căn giữa chuẩn */
+    
+    color: var(--text-color-light); /* thay đổi để phù hợp với dark mode */
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;   
+    z-index: 11; /* Nằm trên cả header */
+}
+
+.modal-close:hover {
+    color: var(--text-color); /* thay đổi để phù hợp với dark mode */
+}
+
+/* PHẦN 2: Body của Popup (Cuộn được) */
+.modal-body {
+    flex-grow: 1;         /* Tự động lấp đầy phần còn lại */
+    overflow-y: auto;   /* CHỈ PHẦN NÀY ĐƯỢC CUỘN */
+    padding: 20px 30px; /* Chuyển padding vào đây */
+}
+
+/* 2 lớp này dùng để Hiện popup lên */
+.modal-overlay.show,
+.modal.show {
+    display: flex; /* Dùng flex để chia header/body */
+}
+
+/* CSS CHO NỘI DUNG BÊN TRONG POPUP     */
+
+/* Tiêu đề H2, H3 (nằm trong .modal-header) */
+.modal-header h2 {
+    text-align: center;
+    color: #e74c3c; 
+    margin: 0; 
+    font-size: 1.8em;
+}
+
+.modal-header h3 {
+    text-align: center;
+    margin: 0; 
+    margin-top: -5px; 
+    font-size: 1.2em;
+    color: var(--text-color-light); /* thay đổi để phù hợp với dark mode */
+    font-weight: 500;
+}
+
+/* CSS cho nội dung trong body (cuộn được) */
+.modal-body p {
+    margin-top: 15px; 
+    line-height: 1.5;
+    color: var(--text-color); /* thay đổi để phù hợp với dark mode */
+}
+.modal-body p > strong {
+    color: var(--text-color); /* thay đổi để phù hợp với dark mode */
+    font-weight: 600; 
+}
+
+.modal-body .modal-section-title {
+    font-weight: 600;
+    color: var(--text-color); /* thay đổi để phù hợp với dark mode */
+    margin-top: 20px;
+    margin-bottom: 5px; 
+}
+
+.modal-body ul {
+    padding-left: 25px;
+    line-height: 1.6;
+    margin-top: 10px; 
+    margin-bottom: 15px; 
+}
+
+.modal-body ul ul {
+     padding-left: 25px;
+     margin-top: 8px;
+     font-size: 0.95em;
+}
+
+.modal-body .modal-footer-text {
+    text-align: center;
+    font-size: 1.1em;
+    margin-top: 25px;
+    color: #e74c3c;
+}
+
+/* SỬALỖI SẢN PHẨM BỊ TRÔI LÊN BANNER   */
+#sale-product-list {
+    position: relative; 
+    top: 0;             
+    left: 0;            
+    margin-top: 0;      
+    clear: both;        
+}
+
+/* CSS CHO SẢN PHẨM KHI NẰM TRONG CAROUSEL */
+#sale-product-list.owl-carousel .sanPham {
+	width: 100%; /* Cho phép Owl Carousel kiểm soát độ rộng */
+	margin-bottom: 10px;
+	transform: none; 
+	transition: all 0.3s ease; 
+}
+
+#sale-product-list.owl-carousel .sanPham:hover {
+	transform: translateY(-8px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* Ẩn nút thêm giỏ hàng  */
+#sale-product-list.owl-carousel .sanPham .themvaogio {
+	opacity: 0;
+	bottom: -50px;
+	transition: all 0.35s ease; /* Thêm lại transition */
+}
+
+/* Hiện nút khi hover vào .sanPham */
+#sale-product-list.owl-carousel .sanPham:hover .themvaogio {
+	opacity: 1;
+	bottom: 10px;
+	right: 10px;
+	transform: scale(1.05);
+}
+
+
+/* STYLING CHO NÚT BẤM CAROUSEL   */
+#sale-product-list.owl-carousel .owl-nav button {
+    position: absolute;
+    top: 50%;
+	
+	/* Căn giữa nút */
+    transform: translateY(-50%); 
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	
+    background: rgba(0, 0, 0, 0.4) !important;
+    color: white !important;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 22px !important; /* Giảm cỡ chữ icon 1 chút */
+    line-height: 1 !important; /* Sửa line-height */
+    padding: 0 !important;
+    margin: 0 !important;
+    transition: background 0.3s ease;
+    z-index: 10; /* Đảm bảo nút nổi lên trên */
+}
+
+#sale-product-list.owl-carousel .owl-nav button:hover {
+    background: rgba(0, 0, 0, 0.7) !important;
+}
+
+/* Vị trí nút trái */
+#sale-product-list.owl-carousel .owl-nav .owl-prev {
+    left: -15px; /* Đẩy ra ngoài lề 1 chút */
+}
+
+/* Vị trí nút phải */
+#sale-product-list.owl-carousel .owl-nav .owl-next {
+    right: -15px; /* Đẩy ra ngoài lề 1 chút */
+}
+
+/* Ẩn nút trên điện thoại (để vuốt) */
+@media (max-width: 600px) {
+    #sale-product-list.owl-carousel .owl-nav {
+        display: none;
+    }
+}
