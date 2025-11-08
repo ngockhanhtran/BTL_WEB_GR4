@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<title>The Mobile Zone</title>
+	<link rel="shortcut icon" href="img/favicon.ico" />
+
+	<script src="PhuongMaiAnh_241224468/darkmode.js"></script>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+	 crossorigin="anonymous">
+	<link rel="stylesheet" href="js/owlcarousel/owl.carousel.min.css">
+	<link rel="stylesheet" href="js/owlcarousel/owl.theme.default.min.css">
+
+	<link rel="stylesheet" href="TranNgocKhanh_241230761/style.css">
+	<link rel="stylesheet" href="TranNgocKhanh_241230761/topnav.css">
+	<link rel="stylesheet" href="TranNgocKhanh_241230761/header.css">
+	<link rel="stylesheet" href="PhamBaTuanTu_241230880/banner.css">
+	<link rel="stylesheet" href="PhamBaTuanTu_241230880/trangchu.css">
+	<link rel="stylesheet" href="PhamBaTuanTu_241230880/home_products.css">
+	<link rel="stylesheet" href="PhamBaTuanTu_241230880/pagination_phantrang.css">
+	<link rel="stylesheet" href="TranNgocKhanh_241230761/footer.css">
+	
+	<link rel="stylesheet" href="PhuongMaiAnh_241224468/darkmode.css">
+
+	<script src="js/Jquery/Jquery.min.js"></script>
+	<script src="js/owlcarousel/owl.carousel.min.js"></script>
+	<script src="TranNgocKhanh_241230761/data/products.js"></script>
+	<script src="TranNgocKhanh_241230761/classes.js"></script>
+	<script src="TranNgocKhanh_241230761/dungchung.js"></script>
+	<script src="PhamBaTuanTu_241230880/trangchu.js"></script>
+</head>
+
+<body>
+	<script> addTopNav(); </script>
+
+	<section>
+		<script> addHeader(); </script>
+
+		<div class="banner">
+			<div class="owl-carousel owl-theme"></div>
+		</div> <a href="PhuongMaiAnh_241224468/sale.html">
+			<img src="img/banners/blackFriday.gif" alt="Black Friday Sale" style="width: 100%; display: block;">
+		</a>
+		<br>
+		<div class="companyMenu group flexContain"></div>
+
+		<div class="flexContain">
+
+			<div class="pricesRangeFilter dropdown">
+				<button class="dropbtn">Giá tiền</button>
+				<div class="dropdown-content"></div>
+			</div>
+
+			<div class="promosFilter dropdown">
+				<button class="dropbtn">Khuyến mãi</button>
+				<div class="dropdown-content"></div>
+			</div>
+
+			<div class="starFilter dropdown">
+				<button class="dropbtn">Số lượng sao</button>
+				<div class="dropdown-content"></div>
+			</div>
+
+			<div class="sortFilter dropdown">
+				<button class="dropbtn">Sắp xếp</button>
+				<div class="dropdown-content"></div>
+			</div>
+
+		</div> <div class="choosedFilter flexContain">
+			<a id="deleteAllFilter" style="display: none;">
+				<h3>Xóa bộ lọc</h3>
+			</a>
+		</div> <hr>
+
+		<div class="contain-products" style="display:none">
+			<div class="filterName">
+				<input type="text" placeholder="Lọc trong trang theo tên..." onkeyup="filterProductsName(this)">
+			</div> <ul id="products" class="homeproduct group flexContain">
+				<div id="khongCoSanPham">
+					<i class="fa fa-times-circle"></i>
+					Không có sản phẩm nào
+				</div> </ul><div class="pagination"></div>
+		</div>
+
+		<div class="contain-khungSanPham"></div>
+
+	</section> <script>
+		addPlc();
+	</script>
+
+	<div class="footer">
+		<script>addFooter();</script>
+	</div>
+
+	<i class="fa fa-arrow-up" id="goto-top-page" onclick="gotoTop()"></i>
+</body>
+
+</html>
