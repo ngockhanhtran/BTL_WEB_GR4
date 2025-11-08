@@ -1,0 +1,80 @@
+.body-tintuc {
+    max-width: 900px;
+    width: 80%;
+    margin: 50px auto 150px;
+}
+
+.tintuc-header {
+    border-bottom: 2px solid var(--border-color); /* Sửa */
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--text-color); /* Sửa */
+    padding-left: 0;
+}
+
+.tintuc-info {
+    border-bottom: 1px solid var(--border-color); /* Sửa */
+    margin-top: 5px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    overflow: auto; 
+}
+
+.tintuc-info img {
+    border: 1px solid var(--border-color); /* Sửa */
+    float: left;
+    margin-right: 15px;
+    padding: 5px;
+    border-radius: 5px;
+    height: 148px;
+    width: 224px;
+}
+
+.tintuc-info h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-color); /* Sửa */
+    margin-top: 5px;
+    line-height: 1.4;
+}
+
+.tintuc-info a:hover h2,
+.tintuc-info a:hover {
+    color: #007bff;
+}
+
+.tintuc-info h5:first-of-type {
+    font-weight: 400;
+    font-style: italic;
+    color: var(--text-color-light); /* Sửa 'gray' */
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.tintuc-info h5:last-of-type {
+    font-weight: 400;
+    font-style: normal;
+    color: var(--text-color-light); /* Sửa #444 */
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 5px 0 0 0;
+	overflow: hidden;
+}
+
+/* CODE MỚI THÊM CHO RESPONSIVE */
+@media (max-width: 768px) {
+    .body-tintuc {
+        width: 100%;
+        margin: 20px auto;
+    }
+
+    .tintuc-info img {
+        float: none; /* Bỏ float */
+        width: 100%; /* Ảnh rộng 100% */
+        height: auto; /* Chiều cao tự động */
+        margin: 0 0 10px 0;
+        box-sizing: border-box;
+    }
+}
