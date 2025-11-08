@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Công cụ tạo sản phẩm</title>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+	 crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="./TranNgocKhanh_241230761/style.css">
+	<link rel="stylesheet" href="./TranNgocKhanh_241230761/header.css">
+	<link rel="stylesheet" type="text/css" href="./PhamBaTuanTu_241230880/home_products.css">
+
+	<script src="./TranNgocKhanh_241230761/data/products.js"></script> 
+	
+	<script src="./TranNgocKhanh_241230761/classes.js"></script>
+	<script src="./TranNgocKhanh_241230761/dungchung.js"></script>
+
+	<style>
+		* { 
+			outline: none; 
+			font-family: sans-serif; 
+		}
+		
+		body {
+			min-width: 320px; /* Cho phép chạy trên di động */
+		}
+
+		table {
+			padding: 5px 3px;
+			border : 1px solid #333;
+			margin: 10px auto;
+			width: 90%;
+			max-width: 1000px; /* Giới hạn chiều rộng */
+		}
+		td {
+			padding: 8px 5px;
+			border-bottom: 1pt solid #333;
+		}
+		td:first-child {
+			font-weight: bold;
+			width: 30%;
+			min-width: 150px;
+		}
+		input, select, textarea {
+			padding: 8px 5px;
+			height: 32px;
+			font-size: 16px;
+			width: 95%;
+			box-sizing: border-box; /* Thêm để padding không làm vỡ layout */
+		}
+		textarea {
+			height: 150px;
+			font-size: 14px;
+			width: 95%; /* Sửa lại cho đồng nhất */
+		}
+		button {
+			border-radius: 10px;
+			margin: 10px auto;
+			font-size: 20px;
+			padding: 10px 15px;
+			border: none;
+			cursor: pointer;
+			background: #4CAF50; /* Màu xanh lá */
+			color: white;
+			display: block; /* Căn giữa */
+		}
+		button:hover {
+			background: #45a049;
+		}
+		.homeproduct li {
+			width: 250px;
+		}
+
+		/* Responsive cho di động */
+		@media (max-width: 768px) {
+			table {
+				width: 95%;
+			}
+			tr {
+				display: flex;
+				flex-direction: column;
+			}
+			td {
+				/* Dùng !important để thắng style inline 60-40 */
+				width: 100% !important; 
+				box-sizing: border-box;
+			}
+			td:first-child {
+				width: 100% !important;
+				min-width: unset;
+			}
+			input, select, textarea {
+				width: 100%;
+			}
+		}
+
+	</style>
+
+	<script>
+		// Thêm sản phẩm vào trang (để xem trước)
+		function addProduct(p, id) {
+			// Sửa lại cho đúng thứ tự: masp, name, img, price, star, rateCount, promo
+			var promo = new Promo(p.promo.name, p.promo.value); // class Promo
+			var product = new Product(p.masp, p.name, p.img, p.price, p.star, p.rateCount, promo); // Class product
+			addToWeb(product, id);
+		}
+
+		// Lấy tất cả thông tin từ form
+		function getResult() {
+			// Thông tin cơ bản
+			var name = document.getElementById('name').value;
+			var company = document.getElementById('company').value;
+			var img = document.getElementById('img').value;
+			var price = document.getElementById('price').value;
+			var star = document.getElementById('star').value || 0;
+			var rateCount = document.getElementById('rateCount').value || 0;
+			var promoName = document.getElementById('promoName').value;
+			var promoValue = document.getElementById('promoValue').value;
+			var masp = document.getElementById('masp').value;
+			
+			// Thông số kỹ thuật
+			var screen = document.getElementById('screen').value;
+			var os = document.getElementById('os').value;
+			var camara = document.getElementById('camara').value;
+			var camaraFront = document.getElementById('camaraFront').value;
+			var cpu = document.getElementById('cpu').value;
+			var ram = document.getElementById('ram').value;
+			var rom = document.getElementById('rom').value;
+			var microUSB = document.getElementById('microUSB').value;
+			var battery = document.getElementById('battery').value;
+
+
+			if(img.indexOf('http') < 0 && img.indexOf('img/') < 0) {
+				img = "img/products/"+ img; 
+			}
+
+			return {
+				"name": name,
+				"company": company,
+				"img": img,
+				"price": price,
+				"star": parseInt(star, 10), // Chuyển thành số
+				"rateCount": parseInt(rateCount, 10), // Chuyển thành số
+				"promo": {
+					"name": promoName,
+					"value": promoValue
+				},
+				"detail": {
+					"screen": screen,
+					"os": os,
+					"camara": camara,
+					"camaraFront": camaraFront,
+					"cpu": cpu,
+					"ram": ram,
+					"rom": rom,
+					"microUSB": microUSB,
+					"battery": battery
+				},
+				"masp" : masp
+			};
+		}
+
+		// Cập nhật textarea với toàn bộ nội dung file products.js
+		function updateTextarea() {
+			var textarea = document.getElementById('t_a');
+			// Định dạng nó giống hệt file products.js
+			// Biến list_products đã được nạp từ file data/products.js
+			textarea.value = "var list_products = " + JSON.stringify(list_products, null, "\t") + ";";
+		}
+
+		// Nút "Tạo Code & Thêm vào danh sách"
+		function saveToDatabase() {
+			var r = getResult();
+			if(!r.name || !r.price || !r.masp) {
+				alert('Chưa nhập Tên, Giá tiền, hoặc Mã sản phẩm!');
+				return;
+			}else {
+				alert('Đã tạo thành công bản copy rồi bạn nhé');
+			}
+			
+			// Kiểm tra trùng masp
+			for(var i=0; i < list_products.length; i++) {
+				if(list_products[i].masp == r.masp) {
+					alert('Lỗi: Mã sản phẩm (masp) "' + r.masp + '" này đã tồn tại!');
+					return;
+				}
+			}
+
+			// Thêm vào ô xem trước "Sản phẩm đã thêm"
+			addProduct(r, 'products');
+
+			// Thêm vào mảng list_products toàn cục
+			list_products.push(r);
+
+			// Cập nhật textarea với toàn bộ mảng mới
+			updateTextarea();
+		}
+
+		// Xem trước trực tiếp
+		function valueChange() {
+			document.getElementById('live').innerHTML = '';
+			var r = getResult();
+			// Chỉ xem trước nếu có masp, tên và giá
+			if(r.masp && r.name && r.price) {
+				addProduct(r, 'live');
+			}
+		}
+
+		// Hàm copy mới
+		function copyToClipboard() {
+			var textarea = document.getElementById('t_a');
+			if (!textarea.value) {
+				alert('Chưa có gì để copy!');
+				return;
+			}
+			textarea.select(); // Chọn toàn bộ text
+			document.execCommand('copy'); // Copy
+			alert('Đã copy toàn bộ nội dung file products.js! \nBây giờ bạn chỉ cần mở file "data/products.js", Ctrl+A và Ctrl+V.');
+		}
+
+		// Gắn sự kiện và tải data cũ
+		window.onload = function() {
+			// Tải nội dung products.js hiện tại vào textarea khi mở trang
+			// Hàm này sẽ đọc biến list_products (đã nạp từ file .js) và điền vào ô
+			updateTextarea();
+
+			var inputs = document.querySelectorAll('input, select');
+			for(var i = 0; i < inputs.length; i++) {
+				// Dùng onchange thay vì onkeyup để giảm tải
+				inputs[i].onchange = valueChange; 
+			}
+		}
+	</script>
+
+</head>
+
+<body>
+	<table>
+		<tr>
+			<td style="width: 60%;">
+				<table cellpadding="7">
+					<tr>
+						<td colspan="2"><h2 style="text-align: center; margin: 0;">Nhập thông tin sản phẩm</h2></td>
+					</tr>
+					<tr>
+						<td>Mã sản phẩm (masp):</td>
+						<td><input id="masp" type="text" placeholder="Ví dụ: SamsungS25Ultra"></td>
+					</tr>
+					<tr>
+						<td>Tên sản phẩm:</td>
+						<td><input id="name" type="text" placeholder="Ví dụ: Samsung Galaxy S25 Ultra"></td>
+					</tr>
+					<tr>
+						<td>Tên Hãng:</td>
+						<td>
+							<select name="" id="company">
+								<option value="Apple">Apple</option>
+								<option value="Samsung">Samsung</option>
+								<option value="Oppo">Oppo</option>
+								<option value="Nokia">Nokia</option>
+								<option value="Huawei">Huawei</option>
+								<option value="Xiaomi">Xiaomi</option>
+								<option value="Realme">Realme</option>
+								<option value="Vivo">Vivo</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>Tên file ảnh (trong img/products/):</td>
+						<td><input id="img" type="text" placeholder="Ví dụ: samsung-galaxy-s25-ultra_3__3.png"></td>
+					</tr>
+					<tr>
+						<td>Giá tiền (định dạng 0.000.000):</td>
+						<td><input id="price" type="text" placeholder="Ví dụ: 27.990.000"></td>
+					</tr>
+					<tr>
+						<td>Đánh giá (mấy sao):</td>
+						<td><input id="star" type="number" value="0"></td>
+					</tr>
+					<tr>
+						<td>Số lượt đánh giá:</td>
+						<td><input id="rateCount" type="number" value="0"></td>
+					</tr>
+					<tr>
+						<td>Khuyến mãi:</td>
+						<td>
+							<select name="km" id="promoName">
+								<option value="">Không khuyến mãi</option>
+								<option value="tragop">Trả góp</option>
+								<option value="giamgia">Giảm giá</option>
+								<option value="moiramat">Mới ra mắt</option>
+								<option value="giareonline">Giá rẻ online</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>Giá trị khuyến mãi:</td>
+						<td><input id="promoValue" type="text" placeholder="Ví dụ: 0 (cho trả góp) hoặc 500.000 (cho giảm giá)"></td>
+					</tr>
+					
+					<tr>
+						<td colspan="2"><h3 style="text-align: center; margin: 10px 0 0 0;">Thông số kỹ thuật</h3></td>
+					</tr>
+					<tr>
+						<td>Màn hình:</td>
+						<td><input id="screen" type="text" placeholder="Ví dụ: Dynamic AMOLED 2X, 6.8', Quad HD+ (2K+)"></td>
+					</tr>
+					<tr>
+						<td>Hệ điều hành:</td>
+						<td><input id="os" type="text" placeholder="Ví dụ: Android 15"></td>
+					</tr>
+					<tr>
+						<td>Camara sau:</td>
+						<td><input id="camara" type="text" placeholder="Ví dụ: 200 MP & 50 MP & 12 MP & 10 MP"></td>
+					</tr>
+					<tr>
+						<td>Camara trước:</td>
+						<td><input id="camaraFront" type="text" placeholder="Ví dụ: 12 MP"></td>
+					</tr>
+					<tr>
+						<td>CPU:</td>
+						<td><input id="cpu" type="text" placeholder="Ví dụ: Snapdragon 8 Gen 4 for Galaxy"></td>
+					</tr>
+					<tr>
+						<td>RAM:</td>
+						<td><input id="ram" type="text" placeholder="Ví dụ: 12 GB"></td>
+					</tr>
+					<tr>
+						<td>Bộ nhớ trong:</td>
+						<td><input id="rom" type="text" placeholder="Ví dụ: 256 GB"></td>
+					</tr>
+					<tr>
+						<td>Thẻ nhớ:</td>
+						<td><input id="microUSB" type="text" placeholder="Ví dụ: Không"></td>
+					</tr>
+					<tr>
+						<td>Dung lượng Pin:</td>
+						<td><input id="battery" type="text" placeholder="Ví dụ: 5000 mAh, sạc 45W"></td>
+					</tr>
+
+				</table>
+			</td>
+
+			<td style="width: 40%; vertical-align: top;">
+				<h2 style="text-align: center;">Xem trước (Live)</h2>
+				<ul class="homeproduct group flexContain" id="live"></ul>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<button onclick="saveToDatabase()">Tạo Code & Thêm vào danh sách</button>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<h2 style="text-align: center;">Sản phẩm đã thêm (để copy)</h2>
+				<ul class="homeproduct" id="products"></ul>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<p style="font-weight: bold; font-size: 18px;">Kết quả Database (Copy toàn bộ nội dung trong ô này):</p>
+				<textarea rows="15" cols="70" id="t_a"></textarea>
+				
+				<button onclick="copyToClipboard()" style="background: #007bff; margin-top: 10px; font-size: 18px;">
+					Copy toàn bộ Database (để dán vào products.js)
+				</button>
+			</td>
+		</tr>
+	</table>
+
+</body>
+
+</html>
