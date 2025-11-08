@@ -1,0 +1,103 @@
+/* Bảng */
+table {
+  width: 90%;
+  margin: 50px auto;
+  border-collapse: collapse;
+  font-size: 15px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  background: var(--section-bg); /* để phù hợp với dark mode thay vì #fff */
+  transition: all 0.3s ease;
+}
+
+/* Tiêu đề chạy ngang */
+.header-table marquee {
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  font-size: 25px;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(90deg, #007bff, #00c6ff);
+  border-radius: 8px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Tiêu đề cột */
+th {
+  background: linear-gradient(135deg, #007bff, #0056d6);
+  color: white;
+  padding: 14px 10px;
+  font-weight: 600;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Ô dữ liệu */
+td {
+  padding: 14px 10px;
+  color: var(--text-color); /* để phù hợp với dark mode thay vì #333 */
+  transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+/*Hiệu ứng khi rê chuột vào dòng */
+tr:hover td {
+  background-color: #f0f7ff;
+  transform: scale(1.005);
+}
+
+/* Dòng chẵn đổi màu */
+tr:nth-child(even) {
+  background-color: var(--table-even-bg); /* để phù hợp với dark mode thay vì #fafafa */
+}
+
+/* Liên kết trong bảng */
+td a {
+  display: block;
+  color: #007bff;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+td a:hover {
+  color: #ff4b2b;
+  text-decoration: underline;
+  margin-left: 5px;
+}
+
+/* Responsive cho điện thoại */
+@media (max-width: 768px) {
+  table {
+    width: 100%;
+    font-size: 13px;
+  }
+
+  th, td {
+    padding: 10px;
+  }
+
+  .header-table marquee {
+    font-size: 18px;
+    height: 45px;
+    line-height: 45px;
+  }
+}
+
+/* Căn chỉnh cột cụ thể */
+.col1 {
+  text-align: center;
+  width: 5%;
+}
+.col2 {
+  width: 55%;
+}
+.col3 {
+  width: 20%;
+}
+.col4 {
+  width: 20%;
+}

@@ -1,0 +1,94 @@
+.body-lienhe{
+	margin: 30px 50px 50px 50px;
+	width: 90%;
+
+}
+.lienhe-header{
+	height: 40px;
+	font-weight: bold;
+	line-height: 40px;
+	padding-left: 10px;
+	background: linear-gradient(90deg, #007bff, #00c6ff);
+	color: white; 
+}
+.lienhe-info{
+	margin: 20px auto 0; 
+	display: inline-block;
+	width: 100%;
+}
+.info-left{
+	float: left;
+	width: 48%;
+}
+.info-right {
+	float: right;
+	width: 48%;	
+}
+iframe {
+	border: 1px solid var(--border-color); /* Giữ nguyên để hỗ trợ darkmode */
+}
+.guithongtin {
+	width: 45%;
+	float: left;
+}
+.thongtinnhom{
+	width: 50%;
+	float: right;
+}
+table{	
+	margin-top: 10px;
+	height: 20px;
+}
+table input{
+	padding: 5px;
+}
+table button{
+	padding: 5px;
+	cursor: pointer;
+	background: var(--section-bg);
+	color: var(--text-color);
+	border: 1px solid #007bff; 
+}
+table button:hover{
+	background: #007bff; 
+	color: #fff;
+}
+.thongtinnhom table{
+	border-collapse: collapse;
+	margin-top: 20px;
+}
+.thongtinnhom table td,th{
+	border: 1px solid #007bff;	
+	height: 30px;
+	padding: 3px;
+	text-align: center;
+}
+
+/* những tr chẵn sẽ có màu khác */
+.thongtinnhom tr:nth-of-type(even) {
+	background-color: var(--table-even-bg);
+}
+
+/*RESPONSIVE */
+@media (max-width: 768px) {
+    .body-lienhe {
+        width: 100%;
+        margin: 20px 0;
+    }
+    .info-left,
+    .info-right,
+    .guithongtin,
+    .thongtinnhom {
+        float: none; /* Bỏ float */
+        width: 100%; /* Chiếm 100% chiều rộng */
+        margin-bottom: 25px;
+    }
+
+    .guithongtin table {
+        width: 100%;
+    }
+    .guithongtin input,
+    .guithongtin textarea {
+        width: 95%;
+    }
+}

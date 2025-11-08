@@ -1,0 +1,32 @@
+.page-gt {
+    max-width: 900px;
+    width: 80%;
+    margin: 50px auto 150px;
+}
+
+.page-header {
+    height: auto;
+    line-height: normal;
+    border-bottom: 2px solid var(--border-color); 
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--text-color); 
+    padding-left: 0;
+}
+
+.page-info {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-color); 
+    margin-top: 0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .page-gt {
+        width: 100%;
+        margin: 20px auto;
+    }
+}
